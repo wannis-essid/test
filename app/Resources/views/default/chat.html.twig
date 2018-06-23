@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+   {# <link rel="stylesheet" href="{{ asset("css/skel.css") }}" />
+    <link rel="stylesheet" href="{{ asset("css/style.css") }}" />
+    <link rel="stylesheet" href="{{ asset("css/style-wide.css") }}" />
+    <link rel="stylesheet" href="{{ asset("css/style-noscript.css") }}" />#}
+    <!--[if lte IE 9]><link rel="stylesheet" href="{{ asset("css/ie/v9.css") }}" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="{{ asset("css/ie/v8.css") }}" /><![endif]-->
+{% endblock %}
+{% block body %}
+    <div id="wrapper">
+        <div id="bg"></div>
+        <div id="overlay"></div>
+        <div id="main" class="container" style="max-width: 1200px ; margin: 0 auto; margin-top: 100px">
+
+         <h1>Live chat</h1>
+            {% for  user in users %}
+                {% if user.id != id_current_user %}
+                <a class="lien_user" href="#" id="{{ user.id }}">{{ user.id }}: {{ user.username|e }}</a>
+            {% endif %}
+            {% endfor %}
+
+            <form method="post" action="{{ path('chat') }}">
+
+                <input type="text" id="id_user" name="id_user" value="">
+                <br>
+                <textarea rows="4" cols="50" name="message">...</textarea><br>
+
+                 <input type="submit" value="Envoyer">
+            </form>
+
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+     <script src="{{ asset("js/skel.min.js") }}"></script>
+    <script src="{{ asset("js/init.js") }}"></script>
+
+    <script src="{{ asset('adminlte/bower_components/jquery/dist/jquery.min.js') }}"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="{{ asset('adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+    <script>
+        $(".lien_user").click(function() {
+            id_user=$(this).attr('id');
+           // alert(id_user);
+            $("#id_user").val(id_user);
+
+        });
+    </script>
+{% endblock %}

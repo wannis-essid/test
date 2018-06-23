@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+   {# <link rel="stylesheet" href="{{ asset("css/skel.css") }}" />
+    <link rel="stylesheet" href="{{ asset("css/style.css") }}" />
+    <link rel="stylesheet" href="{{ asset("css/style-wide.css") }}" />
+    <link rel="stylesheet" href="{{ asset("css/style-noscript.css") }}" />#}
+    <!--[if lte IE 9]><link rel="stylesheet" href="{{ asset("css/ie/v9.css") }}" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="{{ asset("css/ie/v8.css") }}" /><![endif]-->
+{% endblock %}
+{% block body %}
+    <div id="wrapper">
+        <div id="bg"></div>
+        <div id="overlay"></div>
+        <div id="main">
+
+            <!-- Header -->
+            <header id="header">
+                <h1>Test PHP </h1>
+                <nav>
+                    <ul>
+                        <li><a href="{{ path("fos_user_security_login") }}" class="icon fa-user"><span class="label">Connexion</span></a></li>
+                        <li><a href="{{ path("fos_user_registration_register") }}" class="icon fa-users"><span class="label">Créer un compte</span></a></li>
+                    </ul>
+                </nav>
+            </header>
+
+
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+  {#  <script src="{{ asset("js/skel.min.js") }}"></script>
+    <script src="{{ asset("js/init.js") }}"></script>#}
+{% endblock %}
